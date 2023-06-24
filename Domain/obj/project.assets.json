@@ -3276,11 +3276,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Domain\\Domain.csproj",
+      "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Domain\\Domain.csproj",
+      "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-      "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Domain\\obj\\",
+      "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"

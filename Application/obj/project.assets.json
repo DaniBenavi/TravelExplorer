@@ -3408,11 +3408,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Application\\Application.csproj",
+      "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Application\\Application.csproj",
+      "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj",
       "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-      "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Application\\obj\\",
+      "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3427,8 +3427,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\MandaditosTarea\\Domain\\Domain.csproj"
+            "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj"
             }
           }
         }

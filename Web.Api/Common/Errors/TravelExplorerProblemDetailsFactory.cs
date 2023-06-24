@@ -7,11 +7,11 @@ using Web.Api.Common.Http;
 
 namespace Web.Api.Common.Errors;
 
-public class MandaditosProblemDetailsFactory : ProblemDetailsFactory
+public class TravelExplorerProblemDetailsFactory : ProblemDetailsFactory
 {
     private readonly ApiBehaviorOptions _options;
 
-    public MandaditosProblemDetailsFactory(ApiBehaviorOptions options)
+    public TravelExplorerProblemDetailsFactory(ApiBehaviorOptions options)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
     }

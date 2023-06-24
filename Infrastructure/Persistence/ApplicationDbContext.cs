@@ -1,8 +1,8 @@
 using Application.Data;
 using Domain.Customers;
-using Domain.Orders;
+using Domain.Reservations;
 using Domain.Primitives;
-using Domain.Products;
+using Domain.Destinations;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,8 +19,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
 
     public DbSet<Customer> Customers { get; set; }
     public DbSet<LineItem> LineItems { get; set; }
-    public DbSet<Order> Orders { get; set; }
-    public DbSet<Product> Products { get; set; }
+    public DbSet<Reservation> Reservations { get; set; }
+    public DbSet<Destination> Destinations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

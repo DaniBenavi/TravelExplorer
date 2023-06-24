@@ -1,31 +1,31 @@
-using Domain.Orders;
+using Domain.Reservations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence.Repositories;
 
-public class OrderRepository : IOrderRepository
+public class ReservationRepository : IReservationRepository
 {
 
     private readonly ApplicationDbContext _context;
 
-    public OrderRepository(ApplicationDbContext context)
+    public ReservationRepository(ApplicationDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
-    public void Add(Order order)
+    public void Add(Reservation reservation)
     {
-        _context.Add(order);
+        _context.Add(reservation);
     }
 
-    public async Task<Order?> GetByIdWithLineItemAsync(OrderId id, LineItemId lineItemId)
+    public async Task<Reservation?> GetByIdWithLineItemAsync(ReservationId id, LineItemId lineItemId)
     {
-        return await _context.Orders.Include(o => o.LineItems.Where(li => li.Id == lineItemId))
+        return await _context.Reservations.Include(o => o.LineItems.Where(li => li.Id == lineItemId))
                                     .SingleOrDefaultAsync(o => o.Id == id);
     }
 
-    public bool HasOneLineItem(Order order)
+    public bool HasOneLineItem(Reservation reservation)
     {
-        return _context.LineItems.Count(li => li.OrderId == order.Id) == 1;
+        return _context.LineItems.Count(li => li.ReservationId == reservation.Id) == 1;
     }
 }

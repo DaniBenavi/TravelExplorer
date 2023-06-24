@@ -1,22 +1,22 @@
 using Domain.Customers;
-using Domain.Orders;
+using Domain.Reservations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infrastructure.Persistence.Configuration;
 
-public class OrderConfiguration : IEntityTypeConfiguration<Order>
+public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
 {
 
-    public void Configure(EntityTypeBuilder<Order> builder)
+    public void Configure(EntityTypeBuilder<Reservation> builder)
     {
-        builder.ToTable("Orders");
+        builder.ToTable("Reservations");
 
         builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Id).HasConversion(
-            OrderId => OrderId.Value,
-            value => new OrderId(value)
+            ReservationId => ReservationId.Value,
+            value => new ReservationId(value)
         );
 
         builder.HasOne<Customer>()
@@ -26,6 +26,6 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 
         builder.HasMany(o => o.LineItems)
             .WithOne()
-            .HasForeignKey(li => li.OrderId);
+            .HasForeignKey(li => li.ReservationId);
     }
 }

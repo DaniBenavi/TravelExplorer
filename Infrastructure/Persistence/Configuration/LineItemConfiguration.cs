@@ -1,5 +1,5 @@
 using Domain.Orders;
-using Domain.Products;
+using Domain.Destinations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,9 +14,9 @@ internal class LineItemConfiguration : IEntityTypeConfiguration<LineItem>
             value => new LineItemId(value)
         );
 
-        builder.HasOne<Product>()
+        builder.HasOne<Destination>()
             .WithMany()
-            .HasForeignKey(li => li.ProductId);
+            .HasForeignKey(li => li.DestinationId);
 
         builder.OwnsOne(li => li.Price);
     }

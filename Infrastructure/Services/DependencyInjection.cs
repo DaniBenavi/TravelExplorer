@@ -1,8 +1,8 @@
 using Application.Data;
 using Domain.Customers;
-using Domain.Orders;
+using Domain.Reservations;
 using Domain.Primitives;
-using Domain.Products;
+using Domain.Destinations;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,8 +26,8 @@ public static class DependencyInjection
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
         services.AddScoped<ICustomerRepository, CustomerRepository>();
-        services.AddScoped<IOrderRepository, OrderRepository>();
-        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IReservationRepository, ReservationRepository>();
+        services.AddScoped<IDestinationRepository, DestinationRepository>();
 
         return services;
 

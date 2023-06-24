@@ -1,17 +1,17 @@
-using Domain.Products;
+using Domain.Destinations;
 using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-internal class ProductConfiguration : IEntityTypeConfiguration<Product>
+internal class DestinationConfiguration : IEntityTypeConfiguration<Destination>
 {
-    public void Configure(EntityTypeBuilder<Product> builder)
+    public void Configure(EntityTypeBuilder<Destination> builder)
     {
         builder.HasKey(p => p.Id);
 
         builder.Property(p => p.Id).HasConversion(
-            productId => productId.Value,
-            value => new ProductId(value)
+            destinationId => destinationId.Value,
+            value => new DestinationId(value)
             );
 
         builder.Property(p => p.Sku).HasConversion(
