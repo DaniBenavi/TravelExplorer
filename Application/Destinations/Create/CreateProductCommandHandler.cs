@@ -1,7 +1,6 @@
 using Application.Destinations.Common;
 using Domain.Primitives;
 using Domain.Destinations;
-using Domain.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -21,7 +20,7 @@ internal class CreateDestinationCommandHandler : IRequestHandler<CreateDestinati
     public async Task<ErrorOr<DestinationResponse>> Handle(CreateDestinationCommand command, CancellationToken cancellationToken)
     {
         var destination = new Destination(
-            new DestinationId(Guid.NewGuid()), Sku.Create(command.Sku)!, command.Name, new Money(command.Currency, command.Amount));
+            new DestinationId(Guid.NewGuid()), command.Name, command.Description);
 
         _destinationRepository.Add(destination);
 

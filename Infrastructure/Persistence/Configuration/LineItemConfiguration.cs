@@ -1,4 +1,4 @@
-using Domain.Orders;
+using Domain.Reservations;
 using Domain.Destinations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

@@ -3,6 +3,7 @@ using Domain.Primitives;
 using Domain.Destinations;
 using Domain.ValueObjects;
 
+
 namespace Domain.Reservations;
 
 public sealed class Reservation : AgregateRoot

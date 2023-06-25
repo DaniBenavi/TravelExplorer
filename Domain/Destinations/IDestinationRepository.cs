@@ -9,6 +9,4 @@ public interface IDestinationRepository
     void Update(Destination destination);
 
     void Remove(Destination destination);
-
-
 }

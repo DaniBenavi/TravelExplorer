@@ -14,13 +14,7 @@ internal class DestinationConfiguration : IEntityTypeConfiguration<Destination>
             value => new DestinationId(value)
             );
 
-        builder.Property(p => p.Sku).HasConversion(
-            sku => sku.Value,
-            value => Sku.Create(value)!);
-
-        builder.OwnsOne(p => p.Price, priceBuilder =>
-        {
-            priceBuilder.Property(m => m.Currency).HasMaxLength(3);
-        });
+        builder.Property(c => c.Name).HasMaxLength(30);
+        builder.Property(c => c.Description).HasMaxLength(50);
     }
 }

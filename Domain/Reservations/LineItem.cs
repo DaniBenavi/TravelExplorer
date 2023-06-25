@@ -2,7 +2,7 @@ using Domain.Customers;
 using Domain.Primitives;
 using Domain.Destinations;
 using Domain.ValueObjects;
-
+using Domain.Reservations;
 namespace Domain.Reservations;
 
 public sealed class LineItem

@@ -6,7 +6,5 @@ namespace Application.Destinations;
 
 public record CreateDestinationCommand(
     string Name,
-    string Sku,
-    string Currency,
-    decimal Amount
+    string Description
 ) : IRequest<ErrorOr<DestinationResponse>>;

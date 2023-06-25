@@ -1,3 +1,5 @@
+using Domain.Reservations;
+
 namespace Domain.Reservations;
 
 public interface IReservationRepository

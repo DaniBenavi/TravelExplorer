@@ -1,16 +1,14 @@
 using Domain.Primitives;
-using Domain.ValueObjects;
 
 namespace Domain.Destinations;
 
 public sealed class Destination : AgregateRoot
 {
-    public Destination(DestinationId id, Sku sku, string name, Money price)
+    public Destination(DestinationId id, string name, string description)
     {
         Id = id;
-        Sku = sku;
         Name = name;
-        Price = price;
+        Description = description;
     }
 
     private Destination()
@@ -18,8 +16,7 @@ public sealed class Destination : AgregateRoot
 
     }
     public DestinationId Id { get; private set; }
-    public Sku Sku { get; private set; }
     public string Name { get; private set; } = string.Empty;
-    public Money Price { get; private set; }
+    public string Description { get; private set; }
 
 }
