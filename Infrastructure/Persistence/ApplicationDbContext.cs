@@ -1,6 +1,7 @@
 using Application.Data;
 using Domain.Customers;
 using Domain.Reservations;
+using Domain.TouristPackages;
 using Domain.Primitives;
 using Domain.Destinations;
 using MediatR;
@@ -21,6 +22,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext, IUnitOfWor
     public DbSet<LineItem> LineItems { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Destination> Destinations { get; set; }
+    public DbSet<TouristPackage> TouristPackages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

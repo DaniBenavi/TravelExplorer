@@ -8,6 +8,8 @@ using Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Domain.TouristPackages;
+
 namespace Infrastructure.Services;
 
 public static class DependencyInjection
@@ -28,6 +30,7 @@ public static class DependencyInjection
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
         services.AddScoped<IDestinationRepository, DestinationRepository>();
+        services.AddScoped<ITouristPackageRepository, TouristPackageRepository>();
 
         return services;
 

@@ -20,7 +20,7 @@ internal class CreateDestinationCommandHandler : IRequestHandler<CreateDestinati
     public async Task<ErrorOr<DestinationResponse>> Handle(CreateDestinationCommand command, CancellationToken cancellationToken)
     {
         var destination = new Destination(
-            new DestinationId(Guid.NewGuid()), command.Name, command.Description);
+            new DestinationId(Guid.NewGuid()), command.Name, command.Description, command.Ubication);
 
         _destinationRepository.Add(destination);
 

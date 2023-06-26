@@ -1,31 +1,42 @@
 using Domain.Reservations;
+using Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistence.Repositories;
-
-public class ReservationRepository : IReservationRepository
+internal sealed class ReservationRepository : IReservationRepository
 {
-
     private readonly ApplicationDbContext _context;
 
     public ReservationRepository(ApplicationDbContext context)
     {
-        _context = context ?? throw new ArgumentNullException(nameof(context));
+        _context = context;
+    }
+
+    public Task<Reservation?> GetByIdAsync(ReservationId id)
+    {
+        return _context.Reservations
+                    .SingleOrDefaultAsync(p => p.Id == id);
     }
 
     public void Add(Reservation reservation)
     {
-        _context.Add(reservation);
+        _context.Reservations.Add(reservation);
+    }
+    public void Update(Reservation reservation)
+    {
+        _context.Reservations.Update(reservation);
+    }
+    public void Remove(Reservation reservation)
+    {
+        _context.Reservations.Remove(reservation);
     }
 
-    public async Task<Reservation?> GetByIdWithLineItemAsync(ReservationId id, LineItemId lineItemId)
+    public Task<Reservation?> GetByIdWithLineItemAsync(ReservationId id)
     {
-        return await _context.Reservations.Include(o => o.LineItems.Where(li => li.Id == lineItemId))
-                                    .SingleOrDefaultAsync(o => o.Id == id);
+        throw new NotImplementedException();
     }
 
     public bool HasOneLineItem(Reservation reservation)
     {
-        return _context.LineItems.Count(li => li.ReservationId == reservation.Id) == 1;
+        throw new NotImplementedException();
     }
 }

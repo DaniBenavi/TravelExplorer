@@ -6,5 +6,6 @@ namespace Application.Destinations;
 
 public record CreateDestinationCommand(
     string Name,
-    string Description
+    string Description,
+    string Ubication
 ) : IRequest<ErrorOr<DestinationResponse>>;
