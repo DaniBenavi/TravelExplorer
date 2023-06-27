@@ -11,7 +11,7 @@ public sealed class Reservation : AgregateRoot
     {
 
     }
-    public Reservation(ReservationId reservationId, CustomerId customerId, DateTime traveldate, Money price, TouristPackageId touristPackageId)
+    public Reservation(ReservationId reservationId, CustomerId customerId, TouristPackageId touristPackageId, DateTime traveldate, Money price)
     {
         Id = reservationId;
         CustomerId = customerId;

@@ -30,7 +30,7 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
             return Error.NotFound("touristPackage.NotFound", $"The touristPackage {command.TouristPackageId} does not exist");
         }
 
-        var touristPackage = TouristPackage.Create(touristPackages.DestinationId);
+        var touristPackage = TouristPackage.Create(touristPackages.CustomerId);
 
         if (!command.Items.Any())
         {
@@ -39,7 +39,7 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
 
         foreach (var item in command.Items)
         {
-            touristPackage.Add(item.Name, item.Description, item.Traveldate, item.Price, new DestinationId(item.DestinationId));
+            touristPackage.Add(new TouristPackageId(item.TouristPackageId), new DestinationId(item.DestinationId), item.Price);
         }
         _touristpackageRepository.Add(touristPackage);
 

@@ -21,11 +21,12 @@ public class TouristPackageConfiguration : IEntityTypeConfiguration<TouristPacka
             value => new TouristPackageId(value)
         );
 
-        builder.Property(li => li.Traveldate);
-        builder.OwnsOne(li => li.Price);
+        builder.HasOne<Customer>()
+            .WithMany()
+            .HasForeignKey(o => o.CustomerId)
+            .IsRequired();
 
         builder.HasMany(o => o.LineItems)
-            .WithOne()
-            .HasForeignKey(li => li.DestinationId);
+            .WithOne().HasForeignKey(li => li.TouristPackageId).IsRequired();
     }
 }

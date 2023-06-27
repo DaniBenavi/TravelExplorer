@@ -13,14 +13,11 @@ internal class LineItemConfiguration : IEntityTypeConfiguration<LineItem>
             LineItemId => LineItemId.Value,
             value => new LineItemId(value)
         );
-        builder.Property(li => li.Name);
-        builder.Property(li => li.Description);
-        builder.Property(li => li.TravelDate);
-        builder.OwnsOne(li => li.Price);
+
         builder.HasOne<Destination>()
             .WithMany()
             .HasForeignKey(li => li.DestinationId);
 
-
+        builder.OwnsOne(li => li.Price);
     }
 }

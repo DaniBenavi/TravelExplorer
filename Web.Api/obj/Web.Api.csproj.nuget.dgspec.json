@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Web.Api\\Web.Api.csproj": {}
+    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Web.Api\\Web.Api.csproj": {}
   },
   "projects": {
-    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj": {
+    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj",
+        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\obj\\",
+        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj"
+              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj"
               }
             }
           }
@@ -83,14 +83,14 @@
         }
       }
     },
-    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj": {
+    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj",
+        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\obj\\",
+        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -154,14 +154,14 @@
         }
       }
     },
-    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\obj\\",
+        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -176,11 +176,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj": {
-                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj"
+              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj": {
+                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj"
               },
-              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj"
+              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj"
               }
             }
           }
@@ -220,14 +220,14 @@
         }
       }
     },
-    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Web.Api\\Web.Api.csproj": {
+    "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Web.Api\\Web.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Web.Api\\Web.Api.csproj",
+        "projectUniqueName": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Web.Api\\Web.Api.csproj",
         "projectName": "Web.Api",
-        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Web.Api\\Web.Api.csproj",
+        "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Web.Api\\Web.Api.csproj",
         "packagesPath": "C:\\Users\\Daniel Benavides\\.nuget\\packages\\",
-        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Web.Api\\obj\\",
+        "outputPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Web.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Daniel Benavides\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -243,11 +243,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj": {
-                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Application\\Application.csproj"
+              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj": {
+                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Application\\Application.csproj"
               },
-              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Infrastructure\\Infrastructure.csproj"
+              "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }

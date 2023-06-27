@@ -4,14 +4,12 @@ namespace Domain.TouristPackages;
 
 public sealed class LineItem
 {
-    internal LineItem(LineItemId id, string name, string description, DateTime traveldate, Money price, DestinationId destinationId)
+    internal LineItem(LineItemId id, TouristPackageId touristPackageId, DestinationId destinationId, Money price)
     {
         Id = id;
-        Name = name;
-        Description = description;
-        TravelDate = traveldate;
-        Price = price;
+        TouristPackageId = touristPackageId;
         DestinationId = destinationId;
+        Price = price;
     }
 
     private LineItem()
@@ -20,11 +18,7 @@ public sealed class LineItem
     }
 
     public LineItemId Id { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public DateTime TravelDate { get; private set; }
-    public decimal Quantity { get; set; }
-    public Money Price { get; private set; }
+    public TouristPackageId TouristPackageId { get; private set; }
     public DestinationId DestinationId { get; private set; }
-
+    public Money Price { get; private set; }
 }

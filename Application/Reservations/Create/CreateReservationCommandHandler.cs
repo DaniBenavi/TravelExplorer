@@ -24,8 +24,7 @@ public sealed class CreateReservationCommandHandler : IRequestHandler<CreateRese
     public async Task<ErrorOr<ReservationResponse>> Handle(CreateReservationCommand command, CancellationToken cancellationToken)
     {
 
-
-        var reservation = new Reservation(command.ReservationId, command.CustomerId, command.Traveldate, command.Price, command.TouristPackageId);
+        var reservation = new Reservation(command.ReservationId, command.CustomerId, command.TouristPackageId, command.Traveldate, command.Price);
 
         _reservationRepository.Add(reservation);
 

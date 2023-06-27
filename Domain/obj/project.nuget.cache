@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KZrQx0CgrHlvLIY+VJ03hZiRlsqwJmrOCISQk5PdlBXxngPOsQsfOhegIhMETwmlqF+uQKDSD+KJvTgDeethAw==",
+  "dgSpecHash": "ek2lrZyGpWPZkxTENb0od7I40/Kah03Ewwc8osqlZJ99MtR18L5CTKqE5K7FvPX1aHC3BRAZB9r43ARt73vjlg==",
   "success": true,
-  "projectFilePath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer\\Domain\\Domain.csproj",
+  "projectFilePath": "D:\\Escritorio\\Modulo 3-Pree\\TravelExplorer _Respaldo\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel Benavides\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Daniel Benavides\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
