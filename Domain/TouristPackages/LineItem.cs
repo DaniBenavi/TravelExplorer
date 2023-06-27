@@ -4,10 +4,9 @@ namespace Domain.TouristPackages;
 
 public sealed class LineItem
 {
-    internal LineItem(LineItemId id, TouristPackageId touristPackageId, string name, string description, DateTime traveldate, Money price, DestinationId destinationId)
+    internal LineItem(LineItemId id, string name, string description, DateTime traveldate, Money price, DestinationId destinationId)
     {
         Id = id;
-        TouristPackageId = touristPackageId;
         Name = name;
         Description = description;
         TravelDate = traveldate;
@@ -21,7 +20,6 @@ public sealed class LineItem
     }
 
     public LineItemId Id { get; private set; }
-    public TouristPackageId TouristPackageId { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public DateTime TravelDate { get; private set; }

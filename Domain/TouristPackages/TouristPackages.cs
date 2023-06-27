@@ -36,9 +36,9 @@ public sealed class TouristPackage : AgregateRoot
         return touristpackage;
     }
 
-    public void Add(TouristPackageId touristPackageId, string name, string description, DateTime travelDate, Money price, DestinationId destinationId)
+    public void Add(string name, string description, DateTime travelDate, Money price, DestinationId destinationId)
     {
-        var LineItem = new LineItem(new LineItemId(Guid.NewGuid()), touristPackageId, name, description, travelDate, price, destinationId);
+        var LineItem = new LineItem(new LineItemId(Guid.NewGuid()), name, description, travelDate, price, destinationId);
 
         _lineItems.Add(LineItem);
     }

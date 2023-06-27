@@ -11,11 +11,8 @@ internal sealed class DestinationRepository : IDestinationRepository
         _context = context;
     }
 
-    public Task<Destination?> GetByIdAsync(DestinationId id)
-    {
-        return _context.Destinations
-                    .SingleOrDefaultAsync(p => p.Id == id);
-    }
+    public async Task<Destination?> GetByIdAsync(DestinationId id) => await _context.Destinations.SingleOrDefaultAsync(p => p.Id == id);
+
 
     public void Add(Destination destination)
     {

@@ -39,7 +39,7 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
 
         foreach (var item in command.Items)
         {
-            touristPackage.Add(new TouristPackageId(item.TouristPackageId), item.Name, item.Description, item.Traveldate, item.Price, new DestinationId(item.DestinationId));
+            touristPackage.Add(item.Name, item.Description, item.Traveldate, item.Price, new DestinationId(item.DestinationId));
         }
         _touristpackageRepository.Add(touristPackage);
 

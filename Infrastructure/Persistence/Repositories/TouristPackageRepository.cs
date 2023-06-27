@@ -35,8 +35,8 @@ public class TouristPackageRepository : ITouristPackageRepository
         throw new NotImplementedException();
     }
 
-    public bool HasOneLineItem(TouristPackage touristPackage)
+    public bool HasOneLineItem(TouristPackage touristpackage)
     {
-        return _context.LineItems.Count(li => li.TouristPackageId == touristPackage.Id) == 1;
+        throw new NotImplementedException();
     }
 }
