@@ -30,6 +30,5 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
         .HasForeignKey(o => o.TouristPackageId).OnDelete(DeleteBehavior.Restrict);
 
         builder.Property(li => li.TravelDate);
-        builder.OwnsOne(li => li.Price);
     }
 }

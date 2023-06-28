@@ -5,9 +5,9 @@ using MediatR;
 
 namespace Application.TouristPackages.Create;
 
-public record CreateTouristPackageCommand(Guid TouristPackageId, List<CreateLineItemCommand> Items) : IRequest<ErrorOr<TouristPackageResponse>>;
+public record CreateTouristPackageCommand(string Name, string Description, DateTime Traveldate, Money Price, List<CreateLineItemCommand> Items) : IRequest<ErrorOr<TouristPackageResponse>>;
 
-public record CreateLineItemCommand(Guid TouristPackageId, string Name, string Description, DateTime Traveldate, Money Price, Guid DestinationId)
+public record CreateLineItemCommand(Guid DestinationId)
 {
 
 }

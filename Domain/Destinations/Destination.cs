@@ -4,13 +4,12 @@ namespace Domain.Destinations;
 
 public sealed class Destination
 {
-    public Destination(DestinationId id, string name, string description, string ubication, Money price)
+    public Destination(DestinationId id, string name, string description, string ubication)
     {
         Id = id;
         Name = name;
         Description = description;
         Ubication = ubication;
-        Price = price;
     }
 
     private Destination()
@@ -22,13 +21,12 @@ public sealed class Destination
     public string Name { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
     public string Ubication { get; private set; } = string.Empty;
-    public Money Price { get; private set; }
 
-    public void Update(string name, string description, string ubication, Money price)
+
+    public void Update(string name, string description, string ubication)
     {
         Name = name;
         Description = description;
         Ubication = ubication;
-        Price = price;
     }
 }

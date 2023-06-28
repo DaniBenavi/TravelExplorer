@@ -18,6 +18,5 @@ internal class LineItemConfiguration : IEntityTypeConfiguration<LineItem>
             .WithMany()
             .HasForeignKey(li => li.DestinationId);
 
-        builder.OwnsOne(li => li.Price);
     }
 }

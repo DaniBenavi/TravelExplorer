@@ -6,6 +6,7 @@ using ErrorOr;
 using MediatR;
 using Domain.TouristPackages;
 using Domain.Reservations;
+using System.Runtime.InteropServices;
 
 namespace Application.TouristPackages.Create;
 public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateTouristPackageCommand, ErrorOr<TouristPackageResponse>>
@@ -23,14 +24,9 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
 
     public async Task<ErrorOr<TouristPackageResponse>> Handle(CreateTouristPackageCommand command, CancellationToken cancellationToken)
     {
-        var touristPackages = await _touristpackageRepository.GetByIdWithLineItemAsync(new TouristPackageId(command.TouristPackageId));
 
-        if (touristPackages is null)
-        {
-            return Error.NotFound("touristPackage.NotFound", $"The touristPackage {command.TouristPackageId} does not exist");
-        }
-
-        var touristPackage = TouristPackage.Create(touristPackages.CustomerId);
+        //var name = new TouristPackage(new TouristPackageId(Guid.NewGuid()), command.Name);
+        var touristPackage = TouristPackage.Create(command.Name, command.Description, command.Traveldate, command.Price);
 
         if (!command.Items.Any())
         {
@@ -39,7 +35,7 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
 
         foreach (var item in command.Items)
         {
-            touristPackage.Add(new TouristPackageId(item.TouristPackageId), new DestinationId(item.DestinationId), item.Price);
+            touristPackage.Add(new DestinationId(item.DestinationId));
         }
         _touristpackageRepository.Add(touristPackage);
 

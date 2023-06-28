@@ -8,6 +8,5 @@ namespace Application.Destinations;
 public record CreateDestinationCommand(
     string Name,
     string Description,
-    string Ubication,
-    Money Price
+    string Ubication
 ) : IRequest<ErrorOr<DestinationResponse>>;

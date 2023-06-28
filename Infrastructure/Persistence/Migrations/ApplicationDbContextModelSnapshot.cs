@@ -131,12 +131,20 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("TravelDate")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.ToTable("TouristPackage", (string)null);
                 });
@@ -188,33 +196,6 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Destinations.Destination", b =>
-                {
-                    b.OwnsOne("Domain.ValueObjects.Money", "Price", b1 =>
-                        {
-                            b1.Property<Guid>("DestinationId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<decimal>("Amount")
-                                .HasColumnType("decimal(18,2)");
-
-                            b1.Property<string>("Currency")
-                                .IsRequired()
-                                .HasMaxLength(3)
-                                .HasColumnType("nvarchar(3)");
-
-                            b1.HasKey("DestinationId");
-
-                            b1.ToTable("Destinations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("DestinationId");
-                        });
-
-                    b.Navigation("Price")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Domain.Reservations.Reservation", b =>
                 {
                     b.HasOne("Domain.Customers.Customer", null)
@@ -227,29 +208,6 @@ namespace Infrastructure.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("TouristPackageId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.OwnsOne("Domain.ValueObjects.Money", "Price", b1 =>
-                        {
-                            b1.Property<Guid>("ReservationId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<decimal>("Amount")
-                                .HasColumnType("decimal(18,2)");
-
-                            b1.Property<string>("Currency")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("ReservationId");
-
-                            b1.ToTable("Reservations");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ReservationId");
-                        });
-
-                    b.Navigation("Price")
                         .IsRequired();
                 });
 
@@ -266,10 +224,13 @@ namespace Infrastructure.Persistence.Migrations
                         .HasForeignKey("TouristPackageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
+            modelBuilder.Entity("Domain.TouristPackages.TouristPackage", b =>
+                {
                     b.OwnsOne("Domain.ValueObjects.Money", "Price", b1 =>
                         {
-                            b1.Property<Guid>("LineItemId")
+                            b1.Property<Guid>("TouristPackageId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<decimal>("Amount")
@@ -277,26 +238,18 @@ namespace Infrastructure.Persistence.Migrations
 
                             b1.Property<string>("Currency")
                                 .IsRequired()
-                                .HasColumnType("nvarchar(max)");
+                                .HasMaxLength(3)
+                                .HasColumnType("nvarchar(3)");
 
-                            b1.HasKey("LineItemId");
+                            b1.HasKey("TouristPackageId");
 
-                            b1.ToTable("LineItems");
+                            b1.ToTable("TouristPackage");
 
                             b1.WithOwner()
-                                .HasForeignKey("LineItemId");
+                                .HasForeignKey("TouristPackageId");
                         });
 
                     b.Navigation("Price")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.TouristPackages.TouristPackage", b =>
-                {
-                    b.HasOne("Domain.Customers.Customer", null)
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 

@@ -20,13 +20,12 @@ public class TouristPackageConfiguration : IEntityTypeConfiguration<TouristPacka
             TouristPackageId => TouristPackageId.Value,
             value => new TouristPackageId(value)
         );
+        builder.Property(c => c.Name).HasMaxLength(30);
+        builder.Property(c => c.Description).HasMaxLength(50);
 
-        builder.HasOne<Customer>()
-            .WithMany()
-            .HasForeignKey(o => o.CustomerId)
-            .IsRequired();
+        builder.OwnsOne(c => c.Price, priceBuilder => { priceBuilder.Property(m => m.Currency).HasMaxLength(3); });
 
         builder.HasMany(o => o.LineItems)
-            .WithOne().HasForeignKey(li => li.TouristPackageId).IsRequired();
+            .WithOne().HasForeignKey(li => li.TouristPackageId);
     }
 }

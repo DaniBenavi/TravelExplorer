@@ -1,5 +1,4 @@
 using Domain.Destinations;
-using Domain.Customers;
 using Domain.Primitives;
 using Domain.ValueObjects;
 
@@ -14,24 +13,29 @@ public sealed class TouristPackage : AgregateRoot
     }
 
     public TouristPackageId Id { get; private set; }
-    public CustomerId CustomerId { get; private set; }
-
+    public string Name { get; private set; }
+    public string Description { get; private set; }
+    public DateTime TravelDate { get; private set; }
+    public Money Price { get; private set; }
     public IReadOnlyList<LineItem> LineItems => _lineItems.AsReadOnly();
 
-    public static TouristPackage Create(CustomerId customerId)
+    public static TouristPackage Create(string name, string description, DateTime traveldate, Money price)
     {
         var touristpackage = new TouristPackage
         {
             Id = new TouristPackageId(Guid.NewGuid()),
-            CustomerId = customerId
+            Name = name,
+            Description = description,
+            TravelDate = traveldate,
+            Price = price
         };
 
         return touristpackage;
     }
 
-    public void Add(TouristPackageId touristPackageId, DestinationId destinationId, Money price)
+    public void Add(DestinationId destinationId)
     {
-        var LineItem = new LineItem(new LineItemId(Guid.NewGuid()), touristPackageId, destinationId, price);
+        var LineItem = new LineItem(new LineItemId(Guid.NewGuid()), Id, destinationId);
 
         _lineItems.Add(LineItem);
     }

@@ -40,9 +40,7 @@ namespace Infrastructure.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Ubication = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Price_Currency = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    Price_Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Ubication = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -54,17 +52,15 @@ namespace Infrastructure.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TravelDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Price_Currency = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
+                    Price_Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TouristPackage", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TouristPackage_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -73,9 +69,7 @@ namespace Infrastructure.Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TouristPackageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DestinationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Price_Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price_Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    DestinationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -101,9 +95,7 @@ namespace Infrastructure.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TouristPackageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TravelDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Price_Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price_Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    TravelDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -147,11 +139,6 @@ namespace Infrastructure.Persistence.Migrations
                 name: "IX_Reservations_TouristPackageId",
                 table: "Reservations",
                 column: "TouristPackageId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TouristPackage_CustomerId",
-                table: "TouristPackage",
-                column: "CustomerId");
         }
 
         /// <inheritdoc />
@@ -167,10 +154,10 @@ namespace Infrastructure.Persistence.Migrations
                 name: "Destinations");
 
             migrationBuilder.DropTable(
-                name: "TouristPackage");
+                name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Customers");
+                name: "TouristPackage");
         }
     }
 }
