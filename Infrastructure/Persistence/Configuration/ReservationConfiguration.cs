@@ -1,7 +1,6 @@
 using Domain.Customers;
 using Domain.Reservations;
 using Domain.TouristPackages;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -25,10 +24,10 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
             .WithMany()
             .HasForeignKey(o => o.CustomerId)
             .IsRequired();
+
         builder.HasOne<TouristPackage>()
         .WithMany()
-        .HasForeignKey(o => o.TouristPackageId).OnDelete(DeleteBehavior.Restrict);
+        .HasForeignKey(o => o.TouristPackageId);
 
-        builder.Property(li => li.TravelDate);
     }
 }

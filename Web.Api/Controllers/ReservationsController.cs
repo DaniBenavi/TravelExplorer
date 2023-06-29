@@ -1,4 +1,5 @@
 using Application.Reservations.Create;
+using Application.Reservations.GetAll;
 using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
@@ -25,4 +26,15 @@ public class Reservations : ApiController
             errors => Problem(errors)
         );
     }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var reservationsResult = await _mediator.Send(new GetAllReservationsQuery());
+
+        return reservationsResult.Match(
+            Reservation => Ok(reservationsResult.Value),
+            errors => Problem(errors)
+        );
+    }
+
 }

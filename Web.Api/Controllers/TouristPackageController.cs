@@ -1,4 +1,5 @@
 using Application.TouristPackages.Create;
+using Application.TouristPackages.GetAll;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,17 @@ public class TouristPackages : ApiController
 
         return createTouristPackageResult.Match(
             customer => Ok(),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var touristPackagesResult = await _mediator.Send(new GetAllTouristPackagesQuery());
+
+        return touristPackagesResult.Match(
+            TouristPackage => Ok(touristPackagesResult.Value),
             errors => Problem(errors)
         );
     }

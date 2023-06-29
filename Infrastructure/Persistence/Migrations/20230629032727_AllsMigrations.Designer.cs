@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230628094658_AllsMigrations")]
+    [Migration("20230629032727_AllsMigrations")]
     partial class AllsMigrations
     {
         /// <inheritdoc />
@@ -65,6 +65,9 @@ namespace Infrastructure.Persistence.Migrations
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Description")
                         .IsRequired()

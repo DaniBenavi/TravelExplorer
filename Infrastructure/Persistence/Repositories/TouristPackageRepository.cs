@@ -39,4 +39,11 @@ public class TouristPackageRepository : ITouristPackageRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<TouristPackage>> GetAll()
+    {
+        return await _context.TouristPackages
+            .Include(o => o.LineItems)
+            .ToListAsync();
+    }
 }

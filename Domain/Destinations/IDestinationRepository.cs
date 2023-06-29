@@ -3,10 +3,10 @@ namespace Domain.Destinations;
 public interface IDestinationRepository
 {
     Task<Destination?> GetByIdAsync(DestinationId id);
-
-    void Add(Destination destination);
-
+    Task<bool> ExistsAsync(DestinationId id);
+    Task Add(Destination destination);
+    Task<List<Destination>> GetAll();
     void Update(Destination destination);
 
-    void Remove(Destination destination);
+    void Delete(Destination destination);
 }

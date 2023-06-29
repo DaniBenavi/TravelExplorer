@@ -4,12 +4,13 @@ namespace Domain.Destinations;
 
 public sealed class Destination
 {
-    public Destination(DestinationId id, string name, string description, string ubication)
+    public Destination(DestinationId id, string name, string description, string ubication, bool active)
     {
         Id = id;
         Name = name;
         Description = description;
         Ubication = ubication;
+        Active = active;
     }
 
     private Destination()
@@ -21,12 +22,10 @@ public sealed class Destination
     public string Name { get; private set; } = string.Empty;
     public string Description { get; private set; } = string.Empty;
     public string Ubication { get; private set; } = string.Empty;
+    public bool Active { get; private set; }
 
-
-    public void Update(string name, string description, string ubication)
+    public static Destination UpdateDestination(Guid id, string name, string description, string ubication, bool active)
     {
-        Name = name;
-        Description = description;
-        Ubication = ubication;
+        return new Destination(new DestinationId(id), name, description, ubication, active);
     }
 }

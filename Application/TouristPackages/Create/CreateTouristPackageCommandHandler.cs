@@ -9,7 +9,7 @@ using Domain.Reservations;
 using System.Runtime.InteropServices;
 
 namespace Application.TouristPackages.Create;
-public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateTouristPackageCommand, ErrorOr<TouristPackageResponse>>
+public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateTouristPackageCommand, ErrorOr<Unit>>
 {
     private readonly ITouristPackageRepository _touristpackageRepository;
     private readonly IDestinationRepository _destinationRepository;
@@ -22,11 +22,15 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
     }
 
 
-    public async Task<ErrorOr<TouristPackageResponse>> Handle(CreateTouristPackageCommand command, CancellationToken cancellationToken)
+    public async Task<ErrorOr<Unit>> Handle(CreateTouristPackageCommand command, CancellationToken cancellationToken)
     {
 
         //var name = new TouristPackage(new TouristPackageId(Guid.NewGuid()), command.Name);
-        var touristPackage = TouristPackage.Create(command.Name, command.Description, command.Traveldate, command.Price);
+        var touristPackage = TouristPackage.Create(
+            command.Name,
+            command.Description,
+            command.Traveldate,
+            command.Price);
 
         if (!command.Items.Any())
         {
@@ -41,6 +45,7 @@ public sealed class CreateTouristPackageCommandHandler : IRequestHandler<CreateT
 
         await _unitofwork.SaveChangesAsync(cancellationToken);
 
-        return new TouristPackageResponse();
+        // return new TouristPackageResponse();
+        return Unit.Value;
     }
 }

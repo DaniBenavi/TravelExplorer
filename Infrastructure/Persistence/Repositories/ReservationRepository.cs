@@ -39,4 +39,6 @@ internal sealed class ReservationRepository : IReservationRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<Reservation>> GetAll() => await _context.Reservations.ToListAsync();
 }

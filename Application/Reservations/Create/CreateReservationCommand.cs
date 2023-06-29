@@ -9,7 +9,7 @@ using MediatR;
 namespace Application.Reservations.Create;
 
 public record CreateReservationCommand(
-    CustomerId CustomerId,
+    Guid CustomerId,
     TouristPackageId TouristPackageId,
     DateTime Traveldate
-    ) : IRequest<ErrorOr<ReservationResponse>>;
+    ) : IRequest<ErrorOr<Unit>>;
