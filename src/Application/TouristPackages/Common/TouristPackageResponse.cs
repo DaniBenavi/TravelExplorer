@@ -8,10 +8,13 @@ public record TouristPackageResponse(
     string Name,
     string Description,
     MoneyResponse Price,
-    DateTime TravelDate
+    DateTime TravelDate,
+    List<LineItemResponse> LineItems
     ) : IRequest<ErrorOr<TouristPackageResponse>>;
 
 public record MoneyResponse(
     string Currency,
     decimal Amount
     );
+
+public record LineItemResponse(string Name, string Ubication);

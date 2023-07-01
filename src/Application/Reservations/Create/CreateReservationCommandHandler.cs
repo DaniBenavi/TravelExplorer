@@ -3,6 +3,7 @@ using Domain.Reservations;
 using Domain.Primitives;
 using ErrorOr;
 using MediatR;
+using Domain.ValueObjects;
 
 namespace Application.Reservations.Create;
 public sealed class CreateReservationCommandHandler : IRequestHandler<CreateReservationCommand, ErrorOr<Unit>>
@@ -22,13 +23,12 @@ public sealed class CreateReservationCommandHandler : IRequestHandler<CreateRese
 
     public async Task<ErrorOr<Unit>> Handle(CreateReservationCommand command, CancellationToken cancellationToken)
     {
-        var customer = await _customerRepository.GetByIdAsync(new CustomerId(command.CustomerId));
-        if (customer is null)
+        if (PhoneNumber.Create(command.PhoneNumber) is not PhoneNumber phoneNumber)
         {
-            return Error.NotFound("Customer.NotFound", $"Customer with the Id {command.CustomerId} not exist");
+            return Error.Validation("Customer.PhoneNumber", " is not a valid phone number");
         }
 
-        var reservation = Reservation.Create(customer.Id, command.TouristPackageId, command.Traveldate);
+        var reservation = Reservation.Create(command.Name, command.Email, phoneNumber, command.TouristPackageId, command.Traveldate);
 
         _reservationRepository.Add(reservation);
 

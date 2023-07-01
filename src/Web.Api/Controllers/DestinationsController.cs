@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using Web.Api.Controllers;
 
-[Route("destinations")]
+[Route("Destinations")]
 public class Destinations : ApiController
 {
     private readonly ISender _mediator;

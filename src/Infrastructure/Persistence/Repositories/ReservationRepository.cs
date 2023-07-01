@@ -11,12 +11,8 @@ internal sealed class ReservationRepository : IReservationRepository
         _context = context;
     }
 
-    public Task<Reservation?> GetByIdAsync(ReservationId id)
-    {
-        return _context.Reservations
-                    .SingleOrDefaultAsync(p => p.Id == id);
-    }
-
+    public async Task<Reservation?> GetByIdAsync(ReservationId id) => await _context.Reservations.SingleOrDefaultAsync(p => p.Id == id);
+    public async Task<bool> ExistsAsync(ReservationId id) => await _context.Reservations.AnyAsync(reservation => reservation.Id == id);
     public void Add(Reservation reservation)
     {
         _context.Reservations.Add(reservation);
@@ -25,7 +21,7 @@ internal sealed class ReservationRepository : IReservationRepository
     {
         _context.Reservations.Update(reservation);
     }
-    public void Remove(Reservation reservation)
+    public void Delete(Reservation reservation)
     {
         _context.Reservations.Remove(reservation);
     }

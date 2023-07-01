@@ -1,5 +1,9 @@
 using Application.Reservations.Create;
+using Application.Reservations.Delete;
 using Application.Reservations.GetAll;
+using Application.Reservations.GetById;
+using Application.Reservations.Update;
+using ErrorOr;
 using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
@@ -37,4 +41,44 @@ public class Reservations : ApiController
         );
     }
 
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(Guid id, [FromBody] UpdateReservationCommand command)
+    {
+        if (command.Id != id)
+        {
+            List<Error> errors = new()
+            {
+                Error.Validation("Reservation.UpdateInvalid", "The request Id does not match with the url Id.")
+            };
+            return Problem(errors);
+        }
+
+        var updateReservationResult = await _mediator.Send(command);
+
+        return updateReservationResult.Match(
+            ReservationId => NoContent(),
+            errors => Problem(errors)
+        );
+    }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var reservationResult = await _mediator.Send(new GetReservationByIdQuery(id));
+
+        return reservationResult.Match(
+            reservation => Ok(reservation),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(Guid id)
+    {
+        var deleteReservationResult = await _mediator.Send(new DeleteReservationCommand(id));
+
+        return deleteReservationResult.Match(
+            ReservationId => NoContent(),
+            errors => Problem(errors)
+        );
+    }
 }

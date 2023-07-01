@@ -18,4 +18,9 @@ public sealed class LineItem
     public LineItemId Id { get; private set; }
     public TouristPackageId TouristPackageId { get; private set; }
     public DestinationId DestinationId { get; private set; }
+    public Guid DestinationIdValue => DestinationId.Value;
+    public void Update(DestinationId destinationId)
+    {
+        DestinationId = destinationId;
+    }
 }

@@ -1,6 +1,6 @@
-using Domain.Customers;
 using Domain.Reservations;
 using Domain.TouristPackages;
+using Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,14 +20,17 @@ public class ReservationConfiguration : IEntityTypeConfiguration<Reservation>
             value => new ReservationId(value)
         );
 
-        builder.HasOne<Customer>()
-            .WithMany()
-            .HasForeignKey(o => o.CustomerId)
-            .IsRequired();
+        builder.Property(c => c.Name).HasMaxLength(30);
+        builder.Property(c => c.Email).HasMaxLength(200);
+        builder.HasIndex(c => c.Email).IsUnique();
+
+        builder.Property(c => c.PhoneNumber).HasConversion(
+           phoneNumber => phoneNumber.Value,
+           value => PhoneNumber.Create(value)!)
+           .HasMaxLength(9);
 
         builder.HasOne<TouristPackage>()
         .WithMany()
         .HasForeignKey(o => o.TouristPackageId);
-
     }
 }

@@ -39,7 +39,23 @@ public sealed class TouristPackage : AgregateRoot
 
         _lineItems.Add(LineItem);
     }
+    public void Update(string name, string description, DateTime traveldate, Money price)
+    {
+        Name = name;
+        Description = description;
+        TravelDate = traveldate;
+        Price = price;
+    }
 
+
+    public void UpdateLineItem(LineItemId lineItemId, DestinationId destinationId)
+    {
+        var lineItem = _lineItems.FirstOrDefault(li => li.Id == lineItemId);
+        if (lineItem != null)
+        {
+            lineItem.Update(destinationId);
+        }
+    }
     public void RemoveLineItem(LineItemId lineItemId, ITouristPackageRepository touristPackageRepository)
     {
         if (touristPackageRepository.HasOneLineItem(this))

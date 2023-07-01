@@ -21,7 +21,7 @@ public class CreateCustomerCommandHandlerUnitTests
     [Fact]
     public async void HandleCreateCustomer_WhenPhoneNumberHasBadFormat_ShouldReturnValidationError()
     {
-        CreateCustomerCommand command = new CreateCustomerCommand(
+        CreateCustomerCommand command = new(
             "Daniel",
             "Benavides",
             "danibenavi@gmail.com",

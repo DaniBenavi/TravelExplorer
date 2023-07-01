@@ -94,7 +94,9 @@ namespace Infrastructure.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CustomerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
                     TouristPackageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TravelDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -102,17 +104,11 @@ namespace Infrastructure.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Reservations", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Reservations_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Reservations_TouristPackage_TouristPackageId",
                         column: x => x.TouristPackageId,
                         principalTable: "TouristPackage",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -132,9 +128,10 @@ namespace Infrastructure.Persistence.Migrations
                 column: "TouristPackageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Reservations_CustomerId",
+                name: "IX_Reservations_Email",
                 table: "Reservations",
-                column: "CustomerId");
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_TouristPackageId",
@@ -146,6 +143,9 @@ namespace Infrastructure.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Customers");
+
+            migrationBuilder.DropTable(
                 name: "LineItems");
 
             migrationBuilder.DropTable(
@@ -153,9 +153,6 @@ namespace Infrastructure.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Destinations");
-
-            migrationBuilder.DropTable(
-                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "TouristPackage");

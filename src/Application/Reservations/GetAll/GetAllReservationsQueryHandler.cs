@@ -1,23 +1,23 @@
 using Application.Reservations.Common;
 using Domain.Reservations;
 using Domain.Destinations;
+using Domain.TouristPackages;
 using ErrorOr;
 using MediatR;
-using Domain.Primitives;
 
 namespace Application.Reservations.GetAll;
-
 
 internal sealed class GetAllReservationsQueryHandler : IRequestHandler<GetAllReservationsQuery, ErrorOr<IReadOnlyList<ReservationResponse>>>
 {
     private readonly IReservationRepository _reservationRepository;
+    private readonly ITouristPackageRepository _touristPackageRepository;
     private readonly IDestinationRepository _destinationRepository;
-    private readonly IUnitOfWork _unitofwork;
 
-    public GetAllReservationsQueryHandler(IReservationRepository reservationRepository, IDestinationRepository destinationRepository, IUnitOfWork unitofwork)
+    public GetAllReservationsQueryHandler(IReservationRepository reservationRepository, ITouristPackageRepository touristPackageRepository, IDestinationRepository destinationRepository)
     {
         _reservationRepository = reservationRepository;
-        _unitofwork = unitofwork;
+        _touristPackageRepository = touristPackageRepository;
+        _destinationRepository = destinationRepository;
     }
 
     public async Task<ErrorOr<IReadOnlyList<ReservationResponse>>> Handle(GetAllReservationsQuery query, CancellationToken cancellationToken)
@@ -28,16 +28,37 @@ internal sealed class GetAllReservationsQueryHandler : IRequestHandler<GetAllRes
 
         foreach (var reservation in reservations)
         {
-            var reservationResponse = new ReservationResponse(
-                reservation.Id.Value,
-                reservation.CustomerId.Value,
-                reservation.TouristPackageId.Value,
-                reservation.TravelDate
-                );
+            var touristPackage = await _touristPackageRepository.GetByIdWithLineItemAsync(reservation.TouristPackageId);
 
-            responses.Add(reservationResponse);
+            var lineItemResponses = new List<LineItemResponse>();
+
+            foreach (var lineItem in touristPackage.LineItems)
+            {
+                var destination = await _destinationRepository.GetByIdAsync(lineItem.DestinationId);
+                string Name = destination != null ? destination.Name : string.Empty;
+                string Ubication = destination != null ? destination.Ubication : string.Empty;
+
+                var lineItemResponse = new LineItemResponse(Name, Ubication);
+                lineItemResponses.Add(lineItemResponse);
+            }
+
+            var response = new ReservationResponse(
+                reservation.Id.Value,
+                reservation.Name,
+                reservation.Email,
+                reservation.PhoneNumber.Value,
+                touristPackage?.TravelDate ?? DateTime.Now,
+                reservation.TravelDate,
+                new TouristPackageResponse(
+                    touristPackage?.Name ?? string.Empty,
+                    lineItemResponses
+                    )
+            );
+
+            responses.Add(response);
         }
 
         return responses;
     }
+
 }
