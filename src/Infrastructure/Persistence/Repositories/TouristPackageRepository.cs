@@ -61,4 +61,31 @@ public class TouristPackageRepository : ITouristPackageRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<TouristPackage>> Search(string name, string description, DateTime? travelDate, decimal? price, string ubication)
+    {
+        var query = _context.TouristPackages.AsQueryable();
+
+        if (!string.IsNullOrEmpty(name))
+            query = query.Where(p => p.Name.Contains(name));
+
+        if (!string.IsNullOrEmpty(description))
+            query = query.Where(p => p.Description.Contains(description));
+
+        if (travelDate.HasValue)
+            query = query.Where(p => p.TravelDate.Date == travelDate.Value.Date);
+
+        if (price.HasValue)
+            query = query.Where(p => p.Price.Amount <= price.Value);
+
+        if (!string.IsNullOrEmpty(ubication))
+        {
+            query = query.Where(p => p.LineItems.Any(li =>
+                _context.Destinations.Any(d => d.Id == li.DestinationId && d.Ubication.Contains(ubication))));
+        }
+
+        return await query
+            .Include(o => o.LineItems)
+            .ToListAsync();
+    }
 }

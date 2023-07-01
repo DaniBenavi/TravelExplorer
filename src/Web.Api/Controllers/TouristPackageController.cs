@@ -2,6 +2,7 @@ using Application.TouristPackages.Create;
 using Application.TouristPackages.Delete;
 using Application.TouristPackages.GetAll;
 using Application.TouristPackages.GetById;
+using Application.TouristPackages.Search;
 using Application.TouristPackages.Update;
 using ErrorOr;
 using MediatR;
@@ -78,6 +79,17 @@ public class TouristPackages : ApiController
 
         return deleteTouristPackageResult.Match(
             ReservationId => NoContent(),
+            errors => Problem(errors)
+        );
+    }
+
+    [HttpGet("search")]
+    public async Task<IActionResult> Get(string? name, string? description, DateTime? travelDate, decimal? price, string? ubication)
+    {
+        var searchTouristPackagesResult = await _mediator.Send(new SearchTouristPackageQuery(name, description, travelDate, price, ubication));
+
+        return searchTouristPackagesResult.Match(
+            touristPackages => Ok(touristPackages),
             errors => Problem(errors)
         );
     }

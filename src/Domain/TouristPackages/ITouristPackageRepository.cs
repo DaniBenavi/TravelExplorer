@@ -11,4 +11,5 @@ public interface ITouristPackageRepository
     void Update(TouristPackage touristpackage);
     void Delete(TouristPackage touristpackage);
     Task<TouristPackage?> GetByIdAsync(TouristPackageId id);
+    Task<List<TouristPackage>> Search(string name, string description, DateTime? travelDate, decimal? price, string ubication);
 }
